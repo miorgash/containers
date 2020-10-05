@@ -1,4 +1,4 @@
-# not working with gpu
+# TODO: volume settings
 version: '3'
 services:
   nlp:
@@ -8,4 +8,4 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - /mnt/py:/var/asset
+      - /mnt/py:/asset

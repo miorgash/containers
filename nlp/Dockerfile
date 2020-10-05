@@ -36,6 +36,9 @@ RUN : "jupyter setting" && \
     python3.7 -m jupyter notebook --generate-config && \
     mkdir -p ~/.jupyter/custom
 COPY ./custom.css /root/.jupyter/custom/custom.css
-WORKDIR /var/assets
+RUN : "create dir" && \
+    mkdir -p /data/
+    mkdir -p /assets/
+WORKDIR /assets
 ENTRYPOINT ["jupyter", "notebook"]
 CMD ["--no-browser", "--port", "8888", "--ip", "0.0.0.0", "--allow-root"]

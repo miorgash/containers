@@ -22,7 +22,8 @@ Not working with GPUs (2020.10.5.)
 
     ```
     # w/o GPUs
-    docker-compose up -d
+    # docker-compose up -d
+    # not yet available
 
     # w/ GPUs
     # coming soon
@@ -36,7 +37,8 @@ Not working with GPUs (2020.10.5.)
     sudo docker run -itd -p 8888:8888 \
 	--name nlp \
 	--restart=always \
-        -v ~/assets:/var/assets \
+        -v ~/assets:/assets \
+	-v livedoor:/data/livedoor \
 	miorgash/nlp:latest
 
     # w/ GPUs
@@ -61,8 +63,8 @@ Get hashed password:
 Set config:
 
 ```~/.jupyter/jupyter_notebook_config.py
+c.NotebookApp.notebook_dir = '/assets'
 c.NotebookApp.password = '$hashed_password'
-c.NotebookApp.notebook_dir = '/var/assets'
 ```
 
 Logout:
