@@ -15,15 +15,34 @@ $ sudo docker build -t miorgash/nlp:latest .
 
 ## Run
 
-Using `docker run` command:
+for ubuntu, osx and other linux
+Not working with GPUs (2020.10.5.)
 
-```
-$ # for ubuntu, osx and other linux
-$ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --restart=always --name nlp miorgash/nlp:latest
-$ # With data container
-$ sudo docker run -itd -p 8888:8888 -v ~/assets:/var/assets --volumes-from fever-common --restart=always --name nlp miorgash/nlp:latest
-# ! docker-compose is not available for running the container with GPUs is not stable.
-```
+- Using `docker-compose` command:
+
+    ```
+    # w/o GPUs
+    docker-compose up -d
+
+    # w/ GPUs
+    # coming soon
+    ```
+
+- Using `docker run` command:
+
+    ```
+    # w/o GPUs
+    # VOLUME はコンテナ内のマウント先ごとに 1 つ用意，1 つずつオプションで指定
+    sudo docker run -itd -p 8888:8888 \
+	--name nlp \
+	--restart=always \
+        -v ~/assets:/var/assets \
+	miorgash/nlp:latest
+
+    # w/ GPUs
+    # coming soon
+    ```
+
 
 ## Notebook settings
 
