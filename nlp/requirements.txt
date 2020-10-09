@@ -3,6 +3,7 @@ docker==4.2.1
 et-xmlfile==1.0.1
 Flask==1.1.1
 gensim==3.8.1
+ginza==4.0.1
 ipython==7.11.1
 jdcal==1.4.1
 joblib==0.14.1
@@ -24,7 +25,11 @@ scikit-learn==0.22.1
 scipy==1.4.1
 seaborn==0.10.0
 sklearn==0.0
-spacy==2.2.3
+spacy==2.3.2
+sudachipy==0.4.9
+sudachidict_core==20200722
+sudachidict_small==20200722
+sudachidict_full==20200722
 tensorflow-datasets==3.0.0
 tensorflow-gpu==1.14.0
 torch==1.4.0
