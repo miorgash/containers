@@ -80,6 +80,10 @@ Restart
 sudo docker restart nlp
 ```
 
+# Sudachidict (if sudachipy/resources directory is mounted)
+
+- `sudachipy link -t core`
+
 # Adding VOLUME
 
 - stop container (removed automatically)
