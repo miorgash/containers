@@ -37,7 +37,7 @@ RUN : "jupyter setting" && \
     mkdir -p ~/.jupyter/custom
 COPY ./custom.css /root/.jupyter/custom/custom.css
 RUN : "create dir" && \
-    mkdir -p /data/
+    mkdir -p /data/ \
     mkdir -p /assets/
 WORKDIR /assets
 ENTRYPOINT ["jupyter", "notebook"]
