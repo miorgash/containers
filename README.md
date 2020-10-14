@@ -38,7 +38,7 @@ Not working with GPUs (2020.10.5.)
 	--name nlp \
 	--restart=always \
         -v ~/assets:/assets \
-	-v sudachipy-resources:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
+	-v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
 	-v livedoor:/data/livedoor \
 	miorgash/nlp:latest
 
