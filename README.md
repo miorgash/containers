@@ -40,6 +40,9 @@ Not working with GPUs (2020.10.5.)
         -v ~/assets:/assets \
 	-v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
 	-v livedoor:/data/livedoor \
+	-v fever-data:/fever/data \
+	-v fever-config:/fever/config \
+	-v fever-logs:/fever/logs \
 	miorgash/nlp:latest
 
     # w/ GPUs
