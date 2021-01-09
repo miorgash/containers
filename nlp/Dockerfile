@@ -26,7 +26,8 @@ RUN ./bin/install-mecab-unidic-neologd -n -y
 COPY ./requirements.txt /var/requirements.txt
 RUN : "Default kernel" && \
     pip install -U pip && \
-    pip install -r /var/requirements.txt
+    pip install -r /var/requirements.txt && \
+    pip install git+https://github.com/miurahr/pykakasi
 COPY ./TensorFlow-2.2.0/requirements.txt /var/kernels/TensorFlow-2.2.0/requirements.txt
 RUN : "Kernel for TensorFlow 2.2.0" && \
     python3.7 -m venv /var/kernels/TensorFlow-2.2.0/venv && \
