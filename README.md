@@ -69,6 +69,7 @@ Not working with GPUs (2020.10.5.)
 
 ## Notebook settings
 
+### Password
 Login to container:
 
 ```
@@ -98,6 +99,30 @@ Restart
 
 ```
 sudo docker restart nlp
+```
+
+## font-settings
+
+open file
+```
+$ vim $(python3.7 -c 'import matplotlib as mlp; print(mlp.matplotlib_fname())')
+```
+
+edit
+
+```
+...
+# font.family         : sans-serif
+font.family         : IPAexGothic
+...
+```
+
+remove cache
+
+```
+$ rm ~/.cache/matplotlib/fontlist-v310.json
+$ rm -rf ~/.cache/matplotlib/tex.cache
+# and then restart jupyter
 ```
 
 # Sudachidict (if sudachipy/resources directory is mounted)
