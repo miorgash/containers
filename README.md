@@ -1,9 +1,26 @@
-# What is it?
+# What is it for?
 
-- jupyter でのレポート作成（深層学習関連以外の汎用的なライブラリを汎用化するため＆見た目の設定を汎用化するため）
+- jupyter/vim を用いた普段使いの分析環境
+
+# 工夫＆モチベーション
+
+- 深層学習関連以外の汎用的なライブラリを汎用化するため＆見た目の設定を汎用化するため）
 - Python パッケージはカーネルで管理する．（コンテナを作るのはオーバーヘッドが大きいので忌避）
 - コンテナ化する理由
     - 可搬性
+
+
+# memo
+```
+sudo docker run -itd -p 8888:8888 \
+    --name nlp \
+    --restart=always \
+    -v ~/assets:/assets \
+    -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
+    -v livedoor:/data/livedoor \
+    -v chive:/data/chive\
+    -v fever-data:/fever/data miorgash/nlp:latest
+```
 
 # Initialize
 
