@@ -10,6 +10,7 @@
 ### 避けたこと
 
 - Jupyter Kernel によるパッケージの管理（1 つのコンテナ上で複数の環境を保守するとモジュールとして大きくなりすぎる）
+- auto remove ... インスタンス停止時に消えるのが面倒
 
 ## Initialize
 
@@ -126,9 +127,9 @@ Not working with GPUs (2020.10.5.)
 ## Other maintenances
 ### Adding VOLUME
 
-- stop container (removed automatically)
+- Stop container and remove manually
 - `docker run` with new volume explicited by `-v` option
-- setting jupyternotebook (look above)
+- Initialize (Look above)
 
 ## How to use
 ### notebook
