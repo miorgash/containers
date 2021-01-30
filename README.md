@@ -1,26 +1,25 @@
-# 概要
+## 概要
 
-## 何か
+### 何か
 - jupyter/vim を用いた普段使いの分析環境
 
-## 工夫
+### 工夫
 - 自然言語処理のライブラリと Jupyter, vim 等の設定を共通化する
 - 深層学習系のライブラリは，このイメージをベースに version ごとに別途イメージを準備する
 
-## 避けたこと
+### 避けたこと
 
 - Jupyter Kernel によるパッケージの管理（1 つのコンテナ上で複数の環境を保守するとモジュールとして大きくなりすぎる）
 
----
-# Initialize
+## Initialize
 
-## build image
+### build image
 
 ```
 $ sudo docker build -t miorgash/nlp:latest .
 ```
 
-## Run
+### Run
 
 for ubuntu, osx and other linux
 Not working with GPUs (2020.10.5.)
@@ -100,7 +99,7 @@ Not working with GPUs (2020.10.5.)
     sudo docker restart nlp
     ```
 
-## font-settings
+### font-settings
 
 - edit config
 
@@ -120,21 +119,19 @@ Not working with GPUs (2020.10.5.)
     # and then restart jupyter
     ```
 
-# set Sudachidict (if sudachipy/resources directory is mounted)
+## Set Sudachidict (if sudachipy/resources directory is mounted)
 
 - `sudachipy link -t core`
 
----
-# other maintenances
-## Adding VOLUME
+## Other maintenances
+### Adding VOLUME
 
 - stop container (removed automatically)
 - `docker run` with new volume explicited by `-v` option
 - setting jupyternotebook (look above)
 
----
-# How to use
-## notebook
+## How to use
+### notebook
 (Client operation)
 1. setup ssh tunnel.
 
@@ -144,23 +141,21 @@ Not working with GPUs (2020.10.5.)
 
 1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
 
-## vim w/ssh
+### vim w/ssh
 
 ```
 vim scp://${username}@${hostname}/${path_relative_from_home}
 vim scp://${username}@${hostname}//${path_abs}
 ```
 
----
-# Memo
-## mecab dict location
+## Memo
+### mecab dict location
 ```
 $ # container 内のものは改めて確認．
 $ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
 ```
 
----
-# References
+## References
 - jupyter in ec2
   - https://qiita.com/t12968yy/items/b6c14f48638060916824
 - ssh tunnel
