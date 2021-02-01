@@ -1,40 +1,21 @@
-## 概要
+# Concept
 
-### 何か
 - jupyter/vim を用いた普段使いの分析環境
-
-### 工夫
 - 自然言語処理のライブラリと Jupyter, vim 等の設定を共通化する
 - 深層学習系のライブラリは，このイメージをベースに version ごとに別途イメージを準備する
 
-### 避けたこと
+# How to set up
 
-- Jupyter Kernel によるパッケージの管理（1 つのコンテナ上で複数の環境を保守するとモジュールとして大きくなりすぎる）
-- auto remove ... インスタンス停止時に消えるのが面倒
-
-## Initialize
-
-### build image
+## build image
 
 ```
 $ sudo docker build -t miorgash/nlp:latest .
 ```
 
-### Run
+## Run
 
 for ubuntu, osx and other linux
-Not working with GPUs (2020.10.5.)
-
-- Using `docker-compose` command:
-
-    ```
-    # w/o GPUs
-    # docker-compose up -d
-    # not yet available
-
-    # w/ GPUs
-    # coming soon
-    ```
+Not working w/GPUs, not working w/docker-compose (2020.10.5.)
 
 - Using `docker run` command:
 
@@ -50,23 +31,16 @@ Not working with GPUs (2020.10.5.)
         -v chive:/data/chive\
         miorgash/nlp:latest
 
-    # w/fever
-    # sudo docker run -itd -p 8888:8888 \
-    #     --name nlp \
-    #     --restart=always \
-    #     -v ~/assets:/assets \
-    #     -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
-    #     -v livedoor:/data/livedoor \
-    #     -v fever-data:/fever/data \
-    #     -v fever-config:/fever/config \
-    #     -v fever-logs:/fever/logs \
-    #     miorgash/nlp:latest
-
     # w/ GPUs
     # coming soon
     ```
 
-## Notebook Password
+## Set Sudachidict (if sudachipy/resources directory is mounted)
+
+- `sudachipy link -t core`
+
+## Change Notebook Password (OPTIONAL)
+
 - Login to container:
 
     ```
@@ -76,31 +50,33 @@ Not working with GPUs (2020.10.5.)
 - Get hashed password:
 
     ```
-    # python3.7 -c 'from notebook.auth import passwd;print(passwd())'
+    $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
     ```
 
 - Set config:
 
     ```
-    vim ~/.jupyter/jupyter_notebook_config.py
+    $ vim ~/.jupyter/jupyter_notebook_config.py
+
     # edit bellow
     # c.NotebookApp.notebook_dir = '/assets'
+    ...
     # c.NotebookApp.password = 'your_hashed_password'
     ```
 
 - Logout:
 
     ```
-    # exit
+    $ exit
     ```
 
-- Restart
+- Restart container
 
     ```
-    sudo docker restart nlp
+    $ sudo docker restart nlp
     ```
 
-### font-settings
+## Change font-settings for japanese (OPTIONAL; IPAexGothic by default)
 
 - edit config
 
@@ -120,21 +96,12 @@ Not working with GPUs (2020.10.5.)
     # and then restart jupyter
     ```
 
-## Set Sudachidict (if sudachipy/resources directory is mounted)
+- restart jupyter notebook
 
-- `sudachipy link -t core`
+# How to use
+## notebook
 
-## Other maintenances
-### Adding VOLUME
-
-- Stop container and remove manually
-- `docker run` with new volume explicited by `-v` option
-- Initialize (Look above)
-
-## How to use
-### notebook
-(Client operation)
-1. setup ssh tunnel.
+1. setup ssh tunnel (from client)
 
     ```console
     ssh -i ~/.ssh/${YOUR_KEY} -f -NL ${YOUR_PORT}:localhost:8888 ${USER_NAME}@${INSTANCE_IP}
@@ -142,21 +109,34 @@ Not working with GPUs (2020.10.5.)
 
 1. open browser and access `http://localhost:${YOUR_PORT}`, type the password.
 
-### vim w/ssh
+## vim w/ssh (from client)
 
 ```
-vim scp://${username}@${hostname}/${path_relative_from_home}
-vim scp://${username}@${hostname}//${path_abs}
+vim scp://username@hostname/relative_path_from_home (persistent file)
+vim scp://username@hostname//abs_path (persistent file)
 ```
 
-## Memo
-### mecab dict location
+# How to maintenance
+## Adding VOLUME
+
+- Stop container and remove manually
+- `docker run` with new volume explicited by `-v` option
+- Initialize (Look above)
+
+# Appendix
+## mecab dict location
 ```
 $ # container 内のものは改めて確認．
 $ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
 ```
 
-## References
+## Rejected ideas
+
+- Jupyter Kernel によるパッケージの管理（1 つのコンテナ上で複数の環境を保守するとモジュールとして大きくなりすぎる）
+- auto remove ... インスタンス停止時に消えるのが面倒
+
+# References
+
 - jupyter in ec2
   - https://qiita.com/t12968yy/items/b6c14f48638060916824
 - ssh tunnel
