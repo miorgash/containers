@@ -16,6 +16,7 @@ magnitude==0.9.4
 matplotlib==3.1.2
 mecab-python3==0.996.3
 mlxtend==0.18.0
+ngboost==0.3.7
 numpy==1.18.1
 openpyxl==3.0.3
 pandas==0.25.3
