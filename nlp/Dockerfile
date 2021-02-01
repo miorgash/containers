@@ -30,14 +30,6 @@ RUN : "Default kernel" && \
     pip install -U pip && \
     pip install -r /var/requirements.txt && \
     pip install git+https://github.com/miurahr/pykakasi
-COPY ./TensorFlow-2.2.0/requirements.txt /var/kernels/TensorFlow-2.2.0/requirements.txt
-RUN : "Kernel for TensorFlow 2.2.0" && \
-    python3.7 -m venv /var/kernels/TensorFlow-2.2.0/venv && \
-    . /var/kernels/TensorFlow-2.2.0/venv/bin/activate && \
-    pip install -U pip && \
-    pip install -r /var/kernels/TensorFlow-2.2.0/requirements.txt && \
-    ipython kernel install --user --name=TensorFlow-2.2.0 --display-name=TensorFlow-2.2.0 && \
-    deactivate
 RUN : "jupyter setting" && \
     python3.7 -m jupyter notebook --generate-config && \
     mkdir -p ~/.jupyter/custom
