@@ -34,6 +34,8 @@ RUN : "jupyter setting" && \
     python3.7 -m jupyter notebook --generate-config && \
     mkdir -p ~/.jupyter/custom
 COPY ./custom.css /root/.jupyter/custom/custom.css
+COPY ./jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
+COPY ./matplotlibrc /usr/local/lib/python3.7/dist-packages/matplotlib/mpl-data/matplotlibrc
 RUN : "create dir" && \
     mkdir -p /data/ \
     mkdir -p /assets/
