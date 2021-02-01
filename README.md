@@ -14,13 +14,11 @@ $ sudo docker build -t miorgash/nlp:latest .
 
 ## Run
 
-for ubuntu, osx and other linux
-Not working w/GPUs, not working w/docker-compose (2020.10.5.)
-
 - Using `docker run` command:
 
     ```
     # w/o GPUs
+    # for ubuntu, osx and other linux
     # VOLUME はコンテナ内のマウント先ごとに 1 つ用意，1 つずつオプションで指定
     sudo docker run -itd -p 8888:8888 \
         --name nlp \
@@ -134,6 +132,7 @@ $ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
 
 - Jupyter Kernel によるパッケージの管理（1 つのコンテナ上で複数の環境を保守するとモジュールとして大きくなりすぎる）
 - auto remove ... インスタンス停止時に消えるのが面倒
+- docker-compose ... 一人で使うスタンドアロンのコンテナではメンテナンスコスト以上の恩恵を受けられない
 
 # References
 
