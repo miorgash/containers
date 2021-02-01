@@ -35,7 +35,7 @@ $ sudo docker build -t miorgash/nlp:latest .
 
 ## Set Sudachidict (if sudachipy/resources directory is mounted)
 
-- `sudachipy link -t core`
+- `sudo docker exec -it nlp sudachipy link -t core`
 
 ## Change Notebook Password (OPTIONAL)
 
