@@ -39,33 +39,21 @@ $ sudo docker build -t miorgash/nlp:latest .
 
 ## Change Notebook Password (OPTIONAL)
 
-- Login to container:
-
-    ```
-    $ sudo docker exec -it nlp /bin/bash
-    ```
-
 - Get hashed password:
 
     ```
-    $ python3.7 -c 'from notebook.auth import passwd;print(passwd())'
+    $ sudo docker exec -it nlp python3.7 -c 'from notebook.auth import passwd;print(passwd())'
     ```
 
 - Set config:
 
     ```
-    $ vim ~/.jupyter/jupyter_notebook_config.py
+    $ sudo docker exec -it nlp vim ~/.jupyter/jupyter_notebook_config.py
 
     # edit bellow
     # c.NotebookApp.notebook_dir = '/assets'
     ...
     # c.NotebookApp.password = 'your_hashed_password'
-    ```
-
-- Logout:
-
-    ```
-    $ exit
     ```
 
 - Restart container
