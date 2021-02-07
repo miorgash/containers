@@ -118,9 +118,13 @@ $ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
 
 ## Rejected ideas
 
-- Jupyter Kernel によるパッケージの管理（1 つのコンテナ上で複数の環境を保守するとモジュールとして大きくなりすぎる）
-- auto remove ... インスタンス停止時に消えるのが面倒
-- docker-compose ... 一人で使うスタンドアロンのコンテナではメンテナンスコスト以上の恩恵を受けられない
+- Jupyter Kernel によるパッケージの管理
+  - docker と jupyter kernel が入れ子になった環境は，変更を加える際に全体を把握するのに時間がかかる（認知コストが高い）
+  - 1 つのコンテナ上で複数の環境を保守するとモジュールとして大きくなりすぎる
+- コンテナの auto remove
+  - 有効とするのが一般的に望ましいが，restart=always が優先
+- docker-compose
+  - 一人で使うスタンドアロンのコンテナではメンテナンスコスト以上の恩恵を受けられない
 
 # References
 
