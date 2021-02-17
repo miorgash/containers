@@ -27,6 +27,7 @@ pandas-profiling==2.10.0
 pathlib==1.0.1
 plotly==4.5.0
 pyarrow==3.0.0
+reportlab==3.5.59
 scikit-learn==0.23.2
 scipy==1.4.1
 seaborn==0.11.1
