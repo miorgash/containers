@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cid=`docker run \
-	--gpus all \
 	-v $PWD:/tmp/work \
 	-w=/tmp/work \
 	-p 8888:8888 \
