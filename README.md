@@ -43,31 +43,6 @@ $ sudo docker build -t miorgash/nlp:latest .
 
 - `sudo docker exec -it nlp sudachipy link -t core`
 
-## Change Notebook Password (OPTIONAL)
-
-- Get hashed password:
-
-    ```
-    $ sudo docker exec -it nlp python3.7 -c 'from notebook.auth import passwd;print(passwd())'
-    ```
-
-- Set config:
-
-    ```
-    $ sudo docker exec -it nlp vim ~/.jupyter/jupyter_notebook_config.py
-
-    # edit bellow
-    # c.NotebookApp.notebook_dir = '/assets'
-    ...
-    # c.NotebookApp.password = 'your_hashed_password'
-    ```
-
-- Restart container
-
-    ```
-    $ sudo docker restart nlp
-    ```
-
 ## Change font-settings for japanese (OPTIONAL; IPAexGothic by default)
 
 - edit config
@@ -113,7 +88,7 @@ vim scp://username@hostname//abs_path (persistent file)
 
 - Stop container and remove manually
 - `docker run` with new volume explicited by `-v` option
-- Initialize (Look above)
+- Run container(Look above)
 
 # Appendix
 ## mecab dict location
