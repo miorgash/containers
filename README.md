@@ -14,10 +14,9 @@ $ sudo docker build -t miorgash/nlp:latest .
 
 ## Run
 
-- Using `docker run` command:
+- w/o GPUs
 
     ```
-    # w/o GPUs
     # for ubuntu, osx and other linux
     cid=`sudo docker run \
             -d \
@@ -34,7 +33,11 @@ $ sudo docker build -t miorgash/nlp:latest .
     echo ${cid:0:12}
     sleep 3
     sudo docker logs ${cid:0:12} 2>&1 | grep "        http"
+    ```
 
+- w/GPUs
+
+    ```
     # w/ GPUs
     # coming soon
     ```
