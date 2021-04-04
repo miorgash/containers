@@ -40,15 +40,15 @@ $ sudo docker build -t miorgash/nlp:latest .
     cid=`sudo docker run \
             --gpus all \
             -d \
-            -p 8888:8888 \
-            --name nlp \
+            -p 8889:8888 \
+            --name nlp-gpu \
             --restart=always \
             -w=/tmp/work \
             -v $PWD:/tmp/work \
             -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
             -v livedoor:/data/livedoor \
             -v chive:/data/chive\
-            miorgash/nlp:latest \
+            miorgash/nlp:gpu\
             jupyter notebook --ip="0.0.0.0" --notebook-dir=/tmp/work --allow-root --no-browser`
     echo ${cid:0:12}
     sleep 3
