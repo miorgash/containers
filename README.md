@@ -134,3 +134,5 @@ $ ls /usr/lib/x86_64-linux-gnu/mecab/dic/mecab-unidic-neologd
   - coming soon
 - MeCab on Ubuntu 18.04
   - https://qiita.com/SUZUKI_Masaya/items/685000d569452585210c
+- amazon-linux docker installation
+  - https://download.docker.com/linux/centos/7/$basearch/stable
