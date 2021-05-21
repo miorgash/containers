@@ -27,6 +27,7 @@ $ sudo docker build -t miorgash/nlp:latest .
             -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
             -v livedoor:/data/livedoor \
             -v chive:/data/chive\
+            -v wikientvec:/data/wikientvec \
             miorgash/nlp:latest \
             jupyter notebook --ip="0.0.0.0" --notebook-dir=/tmp/work --allow-root --no-browser`
     echo ${cid:0:12}
@@ -48,6 +49,7 @@ $ sudo docker build -t miorgash/nlp:latest .
             -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
             -v livedoor:/data/livedoor \
             -v chive:/data/chive\
+            -v wikientvec:/data/wikientvec \
             miorgash/nlp-gpu:latest\
             jupyter notebook --ip="0.0.0.0" --notebook-dir=/tmp/work --allow-root --no-browser`
     echo ${cid:0:12}
