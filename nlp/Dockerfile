@@ -23,8 +23,14 @@ RUN : "image peculiar settings" && \
     : "update-alternatives --config mecab-dictionary # interactive check command" && \
     apt install git make curl xz-utils file unzip -y && \
     git clone --depth 1 https://github.com/neologd/mecab-unidic-neologd /tmp/mecab-unidic-neologd
+WORKDIR /tmp/mecab-ipadic-neologd
+RUN : "ipadic-neologd" && \
+    git clone https://github.com/neologd/mecab-ipadic-neologd.git && \
+    cd mecab-ipadic-neologd && \
+    sudo bin/install-mecab-ipadic-neologd -y -n
 WORKDIR /tmp/mecab-unidic-neologd
-RUN ./bin/install-mecab-unidic-neologd -n -y
+RUN : "unidic-neologd" && \
+    ./bin/install-mecab-unidic-neologd -n -y
 COPY ./requirements.txt /var/requirements.txt
 RUN : "Default kernel" && \
     pip install -U pip && \
