@@ -34,8 +34,7 @@ RUN : "unidic-neologd" && \
 COPY ./requirements.txt /var/requirements.txt
 RUN : "Default kernel" && \
     pip install -U pip && \
-    pip install -r /var/requirements.txt && \
-    pip install git+https://github.com/miurahr/pykakasi
+    pip install -r /var/requirements.txt
 RUN : "jupyter setting" && \
     mkdir -p ~/.jupyter/custom
 COPY ./custom.css /root/.jupyter/custom/custom.css
