@@ -17,7 +17,7 @@ $ sudo docker build -t miorgash/nlp:latest .
 - w/o GPUs
 
     ```
-    cid=`sudo docker run \
+    cid=`docker run --platform=linux/amd64 \
             -d \
             -p 8888:8888 \
             --name nlp \
@@ -27,18 +27,17 @@ $ sudo docker build -t miorgash/nlp:latest .
             -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
             -v livedoor:/data/livedoor \
             -v chive:/data/chive\
-            -v wikientvec:/data/wikientvec \
             miorgash/nlp:latest \
             jupyter notebook --ip="0.0.0.0" --notebook-dir=/tmp/work --allow-root --no-browser`
     echo ${cid:0:12}
     sleep 3
-    sudo docker logs ${cid:0:12} 2>&1 | grep "        http"
+    docker logs ${cid:0:12} 2>&1 | grep "        http"
     ```
 
 - w/GPUs
 
     ```
-    cid=`sudo docker run \
+    cid=`docker run --platform=linux/amd64 \
             --gpus all \
             -d \
             -p 8889:8888 \
@@ -49,12 +48,11 @@ $ sudo docker build -t miorgash/nlp:latest .
             -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
             -v livedoor:/data/livedoor \
             -v chive:/data/chive\
-            -v wikientvec:/data/wikientvec \
             miorgash/nlp-gpu:latest\
             jupyter notebook --ip="0.0.0.0" --notebook-dir=/tmp/work --allow-root --no-browser`
     echo ${cid:0:12}
     sleep 3
-    sudo docker logs ${cid:0:12} 2>&1 | grep "        http"
+    docker logs ${cid:0:12} 2>&1 | grep "        http"
     ```
 
 ## Set Sudachidict (if sudachipy/resources directory is mounted)
