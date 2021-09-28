@@ -26,7 +26,7 @@ $ sudo docker build -t miorgash/nlp:latest .
             -v $PWD:/tmp/work \
             -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
             -v livedoor:/data/livedoor \
-            -v chive:/data/chive\
+            -v chive:/data/chive -v chive_v1.2mc90:/data/chive_v1.2mc90 \
             miorgash/nlp:latest \
             jupyter notebook --ip="0.0.0.0" --notebook-dir=/tmp/work --allow-root --no-browser`
     echo ${cid:0:12}
