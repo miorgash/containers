@@ -18,20 +18,20 @@ $ sudo docker build -t miorgash/nlp:latest .
 
     ```
     cid=`docker run --platform=linux/amd64 \
-            -d \
-            -p 8888:8888 \
-            --name nlp \
-            --restart=always \
-            -w=/tmp/work \
-            -v $PWD:/tmp/work \
-            -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
-            -v livedoor:/data/livedoor \
-            -v chive:/data/chive \
-            -v chive_v1.2mc90:/data/chive_v1.2mc90 \
-            -v wikientvec_100d:/data/wikientvec_100 \
-            -v wikientvec_300d:/data/wikientvec_300d \
-            miorgash/nlp:latest \
-            jupyter notebook --ip="0.0.0.0" --notebook-dir=/tmp/work --allow-root --no-browser`
+          -d \
+          -p 8888:8888 \
+          --name nlp \
+          --restart=always \
+          -w=/tmp/work \
+          -v $PWD:/root/notebook \
+          -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
+          -v livedoor:/data/livedoor \
+          -v chive:/data/chive \
+          -v chive_v1.2mc90:/data/chive_v1.2mc90 \
+          -v wikientvec_100d:/data/wikientvec_100 \
+          -v wikientvec_300d:/data/wikientvec_300d \
+          miorgash/nlp:latest \
+          jupyter notebook --ip="0.0.0.0" --notebook-dir=/root/notebook --allow-root --no-browser`
     echo ${cid:0:12}
     sleep 3
     docker logs ${cid:0:12} 2>&1 | grep "        http"
@@ -40,6 +40,7 @@ $ sudo docker build -t miorgash/nlp:latest .
 - w/GPUs
 
     ```
+    # not fixed
     cid=`docker run --platform=linux/amd64 \
             --gpus all \
             -d \
