@@ -22,8 +22,8 @@ $ sudo docker build -t miorgash/nlp:latest .
           -p 8888:8888 \
           --name nlp \
           --restart=always \
-          -w=/tmp/work \
-          -v $PWD:/root/notebook \
+          -w=/root/assets \
+          -v $PWD:/root/assets \
           -v sudachipy:/usr/local/lib/python3.7/dist-packages/sudachipy/resources \
           -v livedoor:/data/livedoor \
           -v chive:/data/chive \
@@ -31,7 +31,7 @@ $ sudo docker build -t miorgash/nlp:latest .
           -v wikientvec_100d:/data/wikientvec_100 \
           -v wikientvec_300d:/data/wikientvec_300d \
           miorgash/nlp:latest \
-          jupyter notebook --ip="0.0.0.0" --notebook-dir=/root/notebook --allow-root --no-browser`
+          jupyter notebook --ip="0.0.0.0" --notebook-dir=/root/assets --allow-root --no-browser`
     echo ${cid:0:12}
     sleep 3
     docker logs ${cid:0:12} 2>&1 | grep "        http"
