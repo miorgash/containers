@@ -32,6 +32,8 @@ WORKDIR /tmp/mecab-unidic-neologd
 RUN : "unidic-neologd" && \
     ./bin/install-mecab-unidic-neologd -n -y
 COPY ./requirements.txt /var/requirements.txt
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH=$PATH:/root/.cargo/bin
 RUN : "Default kernel" && \
     pip install -U pip && \
     pip install -r /var/requirements.txt
